@@ -145,6 +145,7 @@ ax6.set_title("Summary", fontsize=12, fontweight="bold")
 out_path = os.path.join(OUT_DIR, "comparison.png")
 plt.savefig(out_path, dpi=150, bbox_inches="tight")
 print(f"\n✅ Comparison plot saved to {out_path}")
+plt.show()  # Display chart directly on screen
 
 # ── Console summary ───────────────────────────────────────────────────────────
 print("\n" + "═" * 50)

@@ -3,7 +3,6 @@
 import os
 import json
 import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import numpy as np
@@ -150,3 +149,4 @@ ax.set_title("FL Summary", fontsize=11, fontweight="bold")
 out_path = os.path.join(OUT_DIR, "fl_metrics.png")
 plt.savefig(out_path, dpi=150, bbox_inches="tight")
 print(f"✅ FL metrics plot saved to {out_path}")
+plt.show()  # Display chart directly on screen

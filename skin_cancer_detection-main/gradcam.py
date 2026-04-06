@@ -9,7 +9,6 @@ import torch.nn.functional as F
 from PIL import Image
 from torchvision import transforms
 import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
@@ -152,6 +151,7 @@ def visualize_gradcam(model, image_paths, true_labels, n=6, save_path="plots/gra
     plt.tight_layout()
     plt.savefig(save_path, dpi=150, bbox_inches="tight")
     print(f"✅ Grad-CAM saved to {save_path}")
+    plt.show()  # Display heatmaps directly on screen
     return save_path
 
 

@@ -175,14 +175,14 @@ class LoggingStrategy(fl.server.strategy.FedAvg):
         }
         self.round_logs.append(round_entry)
 
-        print(f"\n{'═'*50}")
+        print(f"\n{'='*50}")
         print(f"  ROUND {server_round}/{self.num_rounds} — AGGREGATED METRICS")
         print(f"  Avg Accuracy : {avg_acc:.4f}")
         print(f"  Avg AUC      : {avg_auc:.4f}")
         print(f"  Avg F1       : {avg_f1:.4f}")
         for i, cm in enumerate(client_metrics):
             print(f"  Client {i}     : Acc={cm['accuracy']}  AUC={cm['auc']}  F1={cm['f1']}")
-        print(f"{'═'*50}\n")
+        print(f"{'='*50}\n")
 
         # Save logs after every round
         with open(self.log_path, "w") as f:
@@ -231,4 +231,4 @@ if __name__ == "__main__":
         strategy=strategy,
     )
 
-    print("\n✅ FL Simulation complete. Logs saved to logs/fl_metrics.json")
+    print("\n[OK] FL Simulation complete. Logs saved to logs/fl_metrics.json")

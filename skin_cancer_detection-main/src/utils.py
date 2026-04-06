@@ -67,15 +67,19 @@ def compute_metrics(all_labels, all_probs):
     all_labels = np.array(all_labels)
     all_probs = np.array(all_probs)
 
+    num_classes = all_probs.shape[1]
     preds = all_probs.argmax(axis=1)
 
     acc = (preds == all_labels).mean()
-    f1 = f1_score(all_labels, preds, average="macro")
+    f1 = f1_score(all_labels, preds, average="macro", labels=np.arange(num_classes))
 
     # Handle edge case (single class)
-    if len(np.unique(all_labels)) > 1:
-        auc = roc_auc_score(all_labels, all_probs, multi_class="ovr")
-    else:
+    try:
+        if len(np.unique(all_labels)) > 1:
+            auc = roc_auc_score(all_labels, all_probs, multi_class="ovr", labels=np.arange(num_classes))
+        else:
+            auc = np.nan
+    except Exception:
         auc = np.nan
 
     return acc, auc, f1
